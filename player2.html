@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <div id="app" style="height: 100vh">
+    </div>
+    <script type="module">
+      import Webamp from "https://unpkg.com/webamp@^2";
+      const webamp = new Webamp({
+        /**
+         * Here we list three tracks. Note that the `metaData` fields and
+         * duration are required to populate the playlist.  If any of those
+         * fields are omitted, Webamp will download at least part of each file
+         * on initial page load in order to determine the missing information.
+         */
+        initialTracks: [
+          {
+            metaData: {
+              artist: "ILLIT",
+              title: "Secret Quest",
+            },
+            // NOTE: Your audio file must be served from the same domain as your HTML
+            // file, or served with permissive CORS HTTP headers:
+            // https://docs.webamp.org/docs/guides/cors
+            url: "file:///media/fuse/drivefs-6dfa4e1f422e0b78bcabc6463fb9fe16/root/%EC%95%84%EC%9D%BC%EB%A6%BF%20(ILLIT)%20-%20%EB%B9%84%EB%B0%80%EC%B0%BE%EA%B8%B0%20Secret%20Quest%20Official%20M_V.mp3",
+            duration: 91,
+          },
+        ],
+      });
+
+      // Returns a promise indicating when it's done loading.
+      webamp.renderWhenReady(document.getElementById("app"));
+    </script>
+  </body>
+</html>
